@@ -1,6 +1,8 @@
 package line
 
 import (
+	"context"
+
 	"github.com/utahta/go-linenotify"
 )
 
@@ -13,6 +15,6 @@ func Init(tk *string) {
 
 // Send message
 func Send(msg string) {
-	c := linenotify.New()
-	c.Notify(*token, msg, "", "", nil)
+	c := linenotify.NewClient()
+	c.Notify(context.Background(), *token, msg, "", "", nil)
 }
